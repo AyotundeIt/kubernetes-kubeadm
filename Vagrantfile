@@ -14,13 +14,13 @@ Vagrant.configure("2") do |config|
 
   # Provision Master Node
   (1..NUM_MASTER_NODE).each do |i|
-    config.vm.define "kubemaster" do |node|
+    config.vm.define "kubemasterM" do |node|
       node.vm.provider "virtualbox" do |vb|
-        vb.name = "kubemaster"
+        vb.name = "kubemasterM"
         vb.memory = 2048
         vb.cpus = 2
       end
-      node.vm.hostname = "kubemaster"
+      node.vm.hostname = "kubemasterM"
 
       # NAT network for internet access (works across macOS and Windows)
       node.vm.network "public_network", type: "dhcp"
@@ -41,13 +41,13 @@ Vagrant.configure("2") do |config|
 
   # Provision Worker Nodes
   (1..NUM_WORKER_NODE).each do |i|
-    config.vm.define "kubenode0#{i}" do |node|
+    config.vm.define "kubenode0M#{i}" do |node|
       node.vm.provider "virtualbox" do |vb|
-        vb.name = "kubenode0#{i}"
+        vb.name = "kubenode0M#{i}"
         vb.memory = 2048
         vb.cpus = 2
       end
-      node.vm.hostname = "kubenode0#{i}"
+      node.vm.hostname = "kubenode0M#{i}"
 
       # NAT network for internet access
       node.vm.network "public_network", type: "dhcp"
